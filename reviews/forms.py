@@ -8,7 +8,8 @@ class NewsLetterForm(forms.Form):
 class NewProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        exclude = ['user', 'project_url']
+        exclude = ['user']
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),
         }
+
