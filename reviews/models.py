@@ -45,17 +45,6 @@ class Project(models.Model):
     project_url=models.URLField(max_length=250)
     user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     profile=models.ForeignKey(Profile, null=True)
-    def average_design(self):
-        design_ratings = list(map(lambda x: x.design_rating, self.reviews.all()))
-        return np.mean(design_ratings)
-
-    def average_usability(self):
-        usability_ratings = list(map(lambda x: x.usability_rating, self.reviews.all()))
-        return np.mean(usability_ratings)
-
-    def average_content(self):
-        content_ratings = list(map(lambda x: x.content_rating, self.reviews.all()))
-        return np.mean(content_ratings)
 
     def save_project(self):
         self.save()
@@ -75,15 +64,6 @@ class Project(models.Model):
         projects = cls.objects.filter(title__icontains=search_term)
         return projects
 
-    @classmethod
-    def update_project(cls, id):
-        projects = cls.objects.filter(id=id).update(id=id)
-        return projects
-
-    @classmethod
-    def update_description(cls, id):
-        projects = cls.objects.filter(id=id).update(id=id)
-        return projects
 
     def __str__(self):
         return self.title
