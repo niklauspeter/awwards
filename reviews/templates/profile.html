@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+{% load bootstrap3 %}
+{{block.super}}
+
+{% block content%}
+{{ user.profile.username }}
+{% for post in posts%}
+{% if post.profile_pic %}
+
+    <div class="col-md-3 card" style="margin:10px;">
+        <h4 style="text-align:center;font-family: 'Playfair Display', serif; margin-top:20px;">{{ user.profile.username }}</h4>
+        <img  src="{{post.profile_pic.url}}" class="img-responsive" alt="Image">
+        <h4 class="text-center"> {{ post.bio }} </h4>
+        <h4>{{post.contactl}}</h4>
+
+{% else %}
+        <p>haiko</p>
+      </div>
+{% endif %}
+    </div>
+  </div>
+  
+
+
+{% endfor %}
+{% endblock %}
+ 
