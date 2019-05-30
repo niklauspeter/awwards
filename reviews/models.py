@@ -4,9 +4,7 @@ from tinymce.models import HTMLField
 
 # Create your models here.
 class Profile(models.Model):
-    class Meta:
-        db_table = 'profile'
-
+    
     bio = models.TextField(max_length=200, null=True, blank=True, default="bio")
     profile_pic = models.ImageField(upload_to='profile_picture/', null=True, blank=True, default= 0)
     user= models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name="profile")
