@@ -1,10 +1,11 @@
 {%extends 'base.html'%} 
+{% load bootstrap3 %}
 {% block content %}
 <div class="container">
 
   <div class="row">
-    {% if articles%}
-      <h2>Found {{ articles|length }} of searched term {{message}}</h2>
+    {% if projects%}
+      <h2>Found {{ projects|length }} of searched term {{message}}</h2>
     {% else %}
       <h2> Found 0 articles for the search term {{message}}</h2>
     {% endif %}
@@ -13,10 +14,20 @@
 
   <div class="row">
 
-  {% if articles %}
-    {% for article in articles %}
-      <div class="col-sm-6 col-md-3">
-          <h1>{{article.username}}</h1>
+  {% if projects %}
+    {% for project in projects %}
+      <div class="col-sm-4 col-md-3">
+          <h1>{{project.title}}</h1>
+          <img src="{{project.project_image.url}}" class="img-responsive" alt="Image">
+          <h4>{{project.description}}</h4>
+          <h4>{{project.project_url}}</h4>
+          {% load ratings %}
+          <h4>Design:</h4>
+          {% ratings project %}
+          <h4>Usability:</h4>
+          {% ratings project %}
+          <h4>Content:</h4>
+          {% ratings project %}
       </div>
     {% endfor %}
   {% endif %}

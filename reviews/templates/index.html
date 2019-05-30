@@ -1,5 +1,57 @@
-{%extends 'base.html'%}
-
-{% block content %}
+{%extends "base.html"%}
+{% load bootstrap3 %}
 {{block.super}}
-{% endblock %}
+
+{% for post in posts %}
+
+  <div class="row">
+    <!-- displaying News articles -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <h2 class="text-center"> {{ post.title }} </h2>
+    </div>
+
+    <!--Display news Article images  -->
+    {% if post.project_image %}
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <img src="{{post.project_image.url}}" class="img-responsive" alt="Image">
+      {% else %}
+      <p>haiko</p>
+    </div>
+    {% endif %}
+    {% endfor%}
+
+    {% block content%}
+
+    {% for post in posts%}
+    {% if post.project_image %}
+    
+      
+    <div class="col-md-3 card" style="margin:10px;">
+        <h4 style="text-align:center;font-family: 'Playfair Display', serif; margin-top:20px;">{{ image.title }}</h4>
+        <img  src="{{post.project_image.url}}" class="img-responsive" alt="Image">
+        <h4 class="text-center"> {{ post.title }} </h4>
+        <h4>{{project.project_url}}</h4>
+        {% autoescape on%}
+        <p style="font-family: 'Open Sans Condensed', sans-serif;">{{ post.description }}</p>
+        {% endautoescape %}
+        <p style="font-family: 'Open Sans Condensed', sans-serif;font-weight: bold; color: rgb(192, 185, 185);"><i>- {{ post.username }} -</i></p>
+        {% load ratings %}
+        <h4>Design:</h4>
+        {% ratings post %}
+        <h4>Usability:</h4>
+        {% ratings post %}
+        <h4>Content:</h4>
+        {% ratings post %}
+        <!-- <a href="{{ image.link }}">{{ image.link }}</a> -->
+        {% else %}
+        <p>haiko</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  
+
+
+  {% endfor %}
+  {% endblock %}
+ 
