@@ -13,7 +13,9 @@
    </div>
 
    <div class="row">
-     <p>{{project.post}}</p>
+      {% autoescape on %}
+     <p>{{project.details}}</p>
+      {% endautoescape %}
    </div>
 
    <div class="row">
