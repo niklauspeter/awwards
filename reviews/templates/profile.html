@@ -4,21 +4,57 @@
 
 {% block content%}
 {{ user.profile.username }}
-{% for post in posts%}
+  {% for post in posts%}
 {% if post.profile_pic %}
+  
+<div class="container" style="margin-left: 35%; margin-top: 5%">
+	<div class="row">
+		<div class="col-lg-3 col-sm-6">
 
-    <div class="col-md-3 card" style="margin:10px;">
-        <h4 style="text-align:center;font-family: 'Playfair Display', serif; margin-top:20px;">{{ user.profile.username }}</h4>
-        <img  src="{{post.profile_pic.url}}" class="img-responsive" alt="Image">
-        <h4 class="text-center"> {{ post.bio }} </h4>
-        <h4>{{post.contactl}}</h4>
+            <div class="card hovercard"  style="text-align: center; text-size-adjust: 70px">
+                <div class="cardheader">
 
+                </div>
+                <div class="avatar">
+                    <img  src="{{post.profile_pic.url}}" alt="Image" width="200" height="200" class="img-circle">
+                </div>
+                <br><br>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="{% url 'profile'%}">{{user.username}}</a>
+                    </div>
+                    <div class= "desc">{{ post.bio }}</div>
+                    <div class="desc">Passionate designer</div>
+                    <div class="desc">Curious developer</div>
+                    <div class="desc">Tech geek</div>
+                    <h5>contact: {{post.contact}}</h5>
+
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" rel="publisher"
+                       href="https://plus.google.com/">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher"
+                       href="https://facebook.com/">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/">
+                        <i class="fa fa-behance"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+	</div>
+</div>
 {% else %}
         <p>haiko</p>
-      </div>
 {% endif %}
-    </div>
-  </div>
   
 
 

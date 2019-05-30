@@ -13,19 +13,38 @@
             <div class="col-md-1" style="padding-top:15px; border-right:1px solid rgb(226, 225, 225); font-family: 'Encode Sans Expanded', sans-serif;">
                 <div class="">
                     <div id="main">
-                        <span style="cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+                        <div class="dropdown">
+                            <a class="btn btn dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"><span style="cursor:pointer">&#9776;</span>MENU
+                            </a>
+                          
+                            <div class="dropdown-menu" style="width:300px;">
+                                <a class="dropdown-item" href="{% url 'home'%}">Home</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/accounts/password/change">Change password</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{%url 'new-project'%}">Upload new project</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{%url 'new-profile'%}">create Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">Logout <img style="width: 20px; float: right;"
+                                        src="https://image.flaticon.com/icons/png/512/126/126467.png" alt=""></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-1" style="padding-top:10px;">
                 <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
-                    <input type="text" class="form-control my-2 my-sm-0 search-input" name="project" placeholder="Search project" id="project">
+                    <input type="text" class="form-control my-2 my-sm-0 search-input" name="project" placeholder="Search project title" id="project">
                 </form>
             </div>
             <div class="col-md-8" style=" padding-top:5px;text-align:center;font-family: 'Comfortaa', cursive; letter-spacing:2px;">
                 <div class="row">
                     <div class="col-md-10">
-                        <a class="navbar-brand navbar-right" href="{% url 'home' %}" style="font-size:30px; color:black; "><strong>klauswwwards.</strong></a>
+                        <a class="navbar-brand navbar-right" href="{% url 'home' %}" style="font-size:30px; color:black; "><strong>klauswwards.</strong></a>
                     </div>
                     <div class="col-md-2" style="padding-top:10px;">
                         <div class="row">
@@ -48,7 +67,7 @@
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{%url 'new-project'%}">Upload new project</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{%url 'new-profile'%}">">create Profile</a>
+                                        <a class="dropdown-item" href="{%url 'new-profile'%}">create Profile</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="/logout">Logout <img style="width: 20px; float: right;"
                                                 src="https://image.flaticon.com/icons/png/512/126/126467.png" alt=""></a>
@@ -62,9 +81,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2" style="padding-top:15px; background-color: #49c5b6; text-align:center">
-                <a href="{%url 'new-project'%}" style="color:white; font-size:14px; text-decoration: none; "> ADD NEW PROJECT
-                  !
+            <div class="col-md-2" style="padding-top:20px; padding-bottom: 20px; background-color: #49c5b6; text-align:center">
+                <a href="{%url 'new-project'%}" style="color:white; font-size:14px; text-decoration: none; "> ADD NEW PROJECT !
                 </a>
               </div>
         </div>

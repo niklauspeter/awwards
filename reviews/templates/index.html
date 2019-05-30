@@ -2,56 +2,101 @@
 {% load bootstrap3 %}
 {{block.super}}
 
-{% for post in posts %}
-
-  <div class="row">
-    <!-- displaying News articles -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <h2 class="text-center"> {{ post.title }} </h2>
-    </div>
-
-    <!--Display news Article images  -->
-    {% if post.project_image %}
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <img src="{{post.project_image.url}}" class="img-responsive" alt="Image">
-      {% else %}
-      <p>haiko</p>
-    </div>
-    {% endif %}
-    {% endfor%}
 
     {% block content%}
+    <div class="box-head-title" style="background-image: url(https://i.ytimg.com/vi/KFqsdtEabk0/maxresdefault.jpg); padding-top: 70px; padding-bottom: 70px; color: aliceblue; text-align: center">
+  <h1>WELCOME TO AWARDS</h1>
+    </div>
 
     {% for post in posts%}
     {% if post.project_image %}
     
       
-    <div class="col-md-3 card" style="margin:10px;">
-        <h4 style="text-align:center;font-family: 'Playfair Display', serif; margin-top:20px;">{{ image.title }}</h4>
-        <img  src="{{post.project_image.url}}" class="img-responsive" alt="Image">
-        <h4 class="text-center"> {{ post.title }} </h4>
-        <h4>{{project.project_url}}</h4>
+    <div class="col-md-3 card" style="margin:10px;margin-top: 40px">
+        <div class=hover-item>
+        <button type="button" class="button" data-toggle="modal" data-target="#exampleModal{{post.id}}">
+          
+          <div class= "img_hov">
+            <img id="myImg" src="{{post.project_image.url}}" alt="Image" style="width:100%; max-width:300px; height:100%" class="img-responsive">
+            
+          </div>
+         
+          </button>
+        </div>
+        <h4 class="font"><strong> {{post.title}}</strong></h4>
         {% autoescape on%}
         <p style="font-family: 'Open Sans Condensed', sans-serif;">{{ post.description }}</p>
         {% endautoescape %}
-        <p style="font-family: 'Open Sans Condensed', sans-serif;font-weight: bold; color: rgb(192, 185, 185);"><i>- {{ post.username }} -</i></p>
-        {% load ratings %}
-        <h4>Design:</h4>
-        {% ratings post %}
-        <h4>Usability:</h4>
-        {% ratings post %}
-        <h4>Content:</h4>
-        {% ratings post %}
-        <!-- <a href="{{ image.link }}">{{ image.link }}</a> -->
-        {% else %}
-        <p>haiko</p>
+        <p style="font-family: 'Open Sans Condensed', sans-serif;font-weight: bold; color: rgb(192, 185, 185);"><i>- {{ user.post.username }} -</i></p>
+            {% load ratings %}
+            <h4>Overall:</h4>
+            {% ratings post %}
+            <p>click image to view more ratings</p>
+            <a href="{{ post.project_url }}">click here to view the site</a>
+    {% else %}
+        <p> </p>
       </div>
       {% endif %}
     </div>
-  </div>
+    {% endfor %}
   
-
-
+    {% for post in posts %}
+    {% if post.project_image %}
+  <!-- Modal -->
+  <div class="modal" id="exampleModal{{post.id}}"  role="dialog" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <img id="myImg" src="{{post.project_image.url}}" alt="Image" style="width:100%;max-width:300px">
+          <h4 class="modal-title">{{post.description}}</h4>
+        </div>
+          <div class="modal-body">
+              {% load ratings %}
+              <h4>Design:</h4>
+              {% ratings post %}
+              <h4>Usability:</h4>
+              {% ratings post %}
+             
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
   {% endfor %}
+  <div class="footer" style="margin-top: 40px ">
+      <section id="footer">
+          <div class="container">
+
+              
+              <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                    <ul class="list-unstyled list-inline social text-center">
+                      <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
+                      <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
+                      <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
+                      <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
+                      <li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+                  </div>
+                  </hr>
+                </div>	
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                    <p><u><a href="">Best-Awardz</a></u> Inc , will help developers from allover showcase their work [as well as inpiration]</p>
+                    <p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="#" target="_blank">Niklauspeter</a></p>
+                  </div>
+                  </hr>
+                </div>	
+              </div>
+        </div>
+      </section>
+      </div>
+
   {% endblock %}
- 
+  
