@@ -1,8 +1,6 @@
 {%extends "base.html"%}
 {% load bootstrap3 %}
 {{block.super}}
-
-
     {% block content%}
     <div class="box-head-title" style="background-image: url(https://i.ytimg.com/vi/KFqsdtEabk0/maxresdefault.jpg); padding-top: 70px; padding-bottom: 70px; color: aliceblue; text-align: center">
   <h1>WELCOME TO AWARDS</h1>
@@ -35,7 +33,7 @@
             <a href="{{ post.project_url }}">click here to view the site</a>
     {% else %}
         <p> </p>
-      </div>
+      
       {% endif %}
     </div>
     {% endfor %}
@@ -67,13 +65,14 @@
         </div>
       </div>
     </div>
+    {% else %}
+        <p> </p>
+     
     {% endif %}
   {% endfor %}
-  <div class="footer" style="margin-top: 40px ">
-      <section id="footer">
-          <div class="container">
-
-              
+  
+      <section >
+          <div class="container"> 
               <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
                     <ul class="list-unstyled list-inline social text-center">
@@ -88,7 +87,7 @@
                 </div>	
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-                    <p><u><a href="">Best-Awardz</a></u> Inc , will help developers from allover showcase their work [as well as inpiration]</p>
+                    <p><u><a href="">klausawwardz</a></u> Inc , will help developers from allover showcase their work [as well as inpiration]</p>
                     <p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="#" target="_blank">Niklauspeter</a></p>
                   </div>
                   </hr>
@@ -96,7 +95,7 @@
               </div>
         </div>
       </section>
-      </div>
+      
 
   {% endblock %}
   
